@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour
 
     [Header("Component References")]
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private AudioSource audioSource;
 
     [Header("Power Values")]
     [SerializeField] private float thrustPower;
@@ -23,6 +24,7 @@ public class Movement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
@@ -34,14 +36,31 @@ public class Movement : MonoBehaviour
     {
         if (thrust.IsPressed())
         {
-            Debug.Log("Space is pressed");
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
             rb.AddRelativeForce(Vector3.up * thrustPower * Time.deltaTime);
+        }
+        else
+        {
+            audioSource.Stop();
         }
     }
 
     private void Update()
     {
+        ProcessRotate();
+    }
+
+    private void ProcessRotate()
+    {
         float rotationValue = rotation.ReadValue<float>();
-        Debug.Log("The rotation value" +  rotationValue);
+        if (rotationValue != 0)
+        {
+            rb.freezeRotation = true;
+            transform.Rotate(rotationValue * Vector3.forward * rotationPower * Time.deltaTime);
+            rb.freezeRotation = false;
+        }
     }
 }
