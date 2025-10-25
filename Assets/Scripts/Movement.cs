@@ -10,6 +10,10 @@ public class Movement : MonoBehaviour
     [Header("Component References")]
     [SerializeField] private Rigidbody rb;
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip sfxThrust;
+    [SerializeField] private ParticleSystem vfxThrust;
+    [SerializeField] private ParticleSystem vfxLeftThrust;
+    [SerializeField] private ParticleSystem vfxRightThrust;
 
     [Header("Power Values")]
     [SerializeField] private float thrustPower;
@@ -38,12 +42,16 @@ public class Movement : MonoBehaviour
         {
             if (!audioSource.isPlaying)
             {
-                audioSource.Play();
+                vfxThrust.Play();
+                
+                vfxRightThrust.Play();
+                audioSource.PlayOneShot(sfxThrust);
             }
             rb.AddRelativeForce(Vector3.up * thrustPower * Time.deltaTime);
         }
         else
         {
+            vfxThrust.Stop();
             audioSource.Stop();
         }
     }
@@ -61,6 +69,21 @@ public class Movement : MonoBehaviour
             rb.freezeRotation = true;
             transform.Rotate(rotationValue * Vector3.forward * rotationPower * Time.deltaTime);
             rb.freezeRotation = false;
+        }
+        else
+        {
+            vfxLeftThrust.Stop();
+            vfxRightThrust.Stop();
+        }
+
+        if (rotationValue == 1)
+        {
+            vfxLeftThrust.Play();
+        }
+
+        if (rotationValue == -1)
+        {
+            vfxRightThrust.Play();
         }
     }
 }
