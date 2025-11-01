@@ -78,12 +78,12 @@ public class Movement : MonoBehaviour
 
         if (rotationValue == 1)
         {
-            vfxLeftThrust.Play();
+            vfxRightThrust.Play();
         }
 
         if (rotationValue == -1)
         {
-            vfxRightThrust.Play();
+            vfxLeftThrust.Play();
         }
     }
 }
