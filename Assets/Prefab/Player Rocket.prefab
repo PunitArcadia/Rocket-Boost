@@ -14,6 +14,9 @@ GameObject:
   - component: {fileID: 434449651895934869}
   - component: {fileID: 6667772058383743400}
   - component: {fileID: 3047539326059141685}
+  - component: {fileID: 6149727738198465787}
+  - component: {fileID: 129730012001293900}
+  - component: {fileID: 2738662077724997337}
   m_Layer: 0
   m_Name: Player Rocket
   m_TagString: Untagged
@@ -54,96 +57,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c525c006e9e1e044851150c4a44344c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust:
-    m_Name: Thrust
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 16564257-436d-4126-9ac7-da17b41b13f3
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 81e06263-36de-4a3d-bc06-a972a5ccc8e9
-      m_Path: <Keyboard>/space
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Thrust
-      m_Flags: 0
-    - m_Name: 
-      m_Id: ac4f5139-7b3d-40e1-93fc-2aa00059f53d
-      m_Path: <Gamepad>/rightTrigger
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Thrust
-      m_Flags: 0
-    m_Flags: 0
-  rotation:
-    m_Name: Rotation
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 2f52873d-4d68-4531-96c9-8a9893f59644
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: Keyboard
-      m_Id: 8b75c859-acff-4e59-acc0-28569476e514
-      m_Path: 1DAxis
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Rotation
-      m_Flags: 4
-    - m_Name: negative
-      m_Id: 120b7e39-785c-4c5d-b092-f8cd57f077c7
-      m_Path: <Keyboard>/rightArrow
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Rotation
-      m_Flags: 8
-    - m_Name: positive
-      m_Id: 2aa75b42-f155-4a3b-a353-51e3c3bbbfd4
-      m_Path: <Keyboard>/leftArrow
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Rotation
-      m_Flags: 8
-    - m_Name: Controller
-      m_Id: 3405a078-4eaa-46a9-a823-525468304231
-      m_Path: 1DAxis
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Rotation
-      m_Flags: 4
-    - m_Name: negative
-      m_Id: 0fb74ade-ff8c-4e14-b346-a3313232b79f
-      m_Path: <Gamepad>/leftStick/left
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Rotation
-      m_Flags: 8
-    - m_Name: positive
-      m_Id: c6fa7ba3-0136-4545-9b0c-311a713b31ab
-      m_Path: <Gamepad>/leftStick/right
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Rotation
-      m_Flags: 8
-    m_Flags: 0
   rb: {fileID: 0}
-  audioSource: {fileID: 0}
-  sfxThrust: {fileID: 8300000, guid: 2de23a893e9da5f47a9a4e02baeb6856, type: 3}
-  vfxThrust: {fileID: 7036660459983167901}
-  vfxLeftThrust: {fileID: 6835230787582717270}
-  vfxRightThrust: {fileID: 1789156741357673447}
   thrustPower: 1400
-  rotationPower: 180
 --- !u!54 &11642677207079623
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -301,12 +216,106 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 156fb23f6f508a74da5a0b749e24f09c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionHandler
-  sfxCrash: {fileID: 8300000, guid: a114d5cc14411d34687539cc1e6eab39, type: 3}
-  sfxSuccess: {fileID: 8300000, guid: ed7cd5243bb0f6041aa3d8ce43d2a487, type: 3}
-  vfxCrash: {fileID: 647334634041197777}
-  vfxSuccess: {fileID: 1940983205090715629}
-  audioSource: {fileID: 0}
-  delayTime: 2
+  crashSfx: {fileID: 8300000, guid: a114d5cc14411d34687539cc1e6eab39, type: 3}
+  successSfx: {fileID: 8300000, guid: ed7cd5243bb0f6041aa3d8ce43d2a487, type: 3}
+  crashVfx: {fileID: 647334634041197777}
+  successVfx: {fileID: 1940983205090715629}
+--- !u!114 &6149727738198465787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6672736691369128908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70d44a335c81f1c47bf49c387d4ad06a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerRotation
+  rb: {fileID: 0}
+  rotationPower: 180
+--- !u!114 &129730012001293900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6672736691369128908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 794f4684f79f1ed47a6199a0dbd00507, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInputHandler
+  thrust:
+    m_Name: Thrust
+    m_Type: 1
+    m_ExpectedControlType: Button
+    m_Id: d4788e92-d6d4-4d40-81bd-af7129ea2610
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: dd653d5e-5f5b-47c4-ac91-5c8693e2f86e
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Thrust
+      m_Flags: 0
+    m_Flags: 0
+  rotation:
+    m_Name: Rotation
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: d5c1c1f8-be7b-4c68-90cc-ce1b3f484030
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: Keyboard
+      m_Id: c520dbfb-43a5-4897-afad-bab5df5e0081
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Rotation
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: 73eb03b7-1f67-418f-a7b3-d9a7301ebcc3
+      m_Path: <Keyboard>/rightArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Rotation
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: b5094d55-daf9-4347-b5da-095c87a3520e
+      m_Path: <Keyboard>/leftArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Rotation
+      m_Flags: 8
+    m_Flags: 0
+  movement: {fileID: 5352946822756691344}
+  rotationController: {fileID: 6149727738198465787}
+  feedback: {fileID: 2738662077724997337}
+--- !u!114 &2738662077724997337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6672736691369128908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e39ed440dc061284f8726dcf3a9c2900, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerFeedBack
+  audioSource: {fileID: 6667772058383743400}
+  thrustSfx: {fileID: 8300000, guid: 2de23a893e9da5f47a9a4e02baeb6856, type: 3}
+  mainThrust: {fileID: 7036660459983167901}
+  leftThrust: {fileID: 6835230787582717270}
+  rightThrust: {fileID: 1789156741357673447}
 --- !u!1001 &737430633694317073
 PrefabInstance:
   m_ObjectHideFlags: 0

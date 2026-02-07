@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fbcb49fe3425134c83923e9a0e420b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spinner
-  rotateAngles: {x: 0, y: 0, z: 6}
+  rotateAngles: {x: 0, y: 0, z: 0}
 --- !u!1 &316958335 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2739722622910296643, guid: 32cd256d9ccb610409db4d22cd63365a,
