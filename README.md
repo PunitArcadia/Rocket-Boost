@@ -2,7 +2,7 @@
 
 A physics-based arcade game built in **Unity**, where the player controls a rocket and navigates through obstacles to reach the goal.
 
-This project was created to learn core gameplay programming concepts such as physics-based movement, collision handling, and level progression.
+This project started as a tutorial-based implementation and was later **refactored to improve gameplay architecture, robustness, and clarity**, serving as a hands-on case study in gameplay systems design.
 
 ---
 
@@ -10,16 +10,42 @@ This project was created to learn core gameplay programming concepts such as phy
 - Control a rocket using thrust and rotation
 - Avoid obstacles and hazards
 - Reach the finish platform to complete levels
-- Restart on collision or failure
+- Crash and success states with delayed transitions
+
+---
+
+## 🧠 Case Study: Refactoring Rocket Boost
+
+### Initial Problems
+While the game was functional, the initial implementation had several issues:
+- Input, movement, audio, VFX, and collision logic tightly coupled
+- Collision events triggering multiple times
+- Player still controllable after crash or success
+- Audio cutting off during scene transitions
+- Physics behaving inconsistently after collisions
+
+---
+
+### Refactor Highlights
+- Separated gameplay responsibilities into dedicated components:
+  - Input handling
+  - Player movement & rotation
+  - Audio and VFX feedback
+  - Collision handling
+- Introduced a **player state system** (`Alive`, `Dead`, `Transitioning`) to prevent duplicate triggers
+- Disabled input, movement, and colliders immediately on collision
+- Differentiated crash vs success physics behavior for better game feel
+- Used **coroutines** to synchronize scene transitions with audio playback
+- Improved overall readability, maintainability, and extensibility of gameplay code
 
 ---
 
 ## 🧠 What I Learned
-- Rigidbody-based movement and forces
-- Input handling and player control
-- Collision detection and response
-- Basic game state flow (play, crash, level complete)
-- Structuring simple gameplay logic in Unity
+- Designing simple state-driven gameplay systems
+- Managing physics, input, and collisions in Unity
+- Debugging timing-related issues using breakpoints and logs
+- Structuring Unity projects beyond tutorial-style scripts
+- Applying software engineering principles to gameplay programming
 
 ---
 
@@ -29,20 +55,14 @@ This project was created to learn core gameplay programming concepts such as phy
 
 ---
 
-## 📌 Current Status
-🔧 **Refactoring planned**
+## 📌 Project Status
+✅ **Refactor complete**
 
-This project is being refactored to:
-- Improve separation of responsibilities
-- Introduce cleaner gameplay architecture
-- Make systems more scalable and maintainable
-
-This refactor will serve as a gameplay systems case study for my portfolio.
+This project now serves as a **gameplay architecture case study** in my portfolio.
 
 ---
 
-## 🚀 Future Improvements
-- State machine for game flow
+## 🚀 Possible Future Improvements
 - Data-driven configuration using ScriptableObjects
-- Event-based communication
-- Gameplay polish (camera, feedback, effects)
+- Event-based communication between gameplay systems
+- Additional gameplay polish (camera effects, feedback tuning)
