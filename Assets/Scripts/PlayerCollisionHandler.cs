@@ -94,7 +94,7 @@ public class PlayerCollisionHandler : MonoBehaviour
     {
         if (movement) movement.enabled = false;
         if (inputHandler) inputHandler.enabled = false;
-        if (playerCollider) playerCollider.enabled = false;
+        //if (playerCollider) playerCollider.enabled = false;
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
         rb.isKinematic = false;
